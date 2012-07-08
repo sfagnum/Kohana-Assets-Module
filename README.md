@@ -1,4 +1,4 @@
 Kohana-Assets-Module
 ====================
 
-JS/CSS menegment module for Kohana 3.2
+JS/CSS managment module for Kohana 3.2
