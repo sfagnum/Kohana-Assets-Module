@@ -32,5 +32,18 @@ class Controller_Abstract extends Controller_Template
                 ->addScripts('media/assets/js/main.js');
         }
     }
-
+```
+<br />
+In you 'layouts/main.php' file add:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cool site</title>
+    <?php Assets::instance('frontend')->render(); ?>
+</head>
+<body>
+    Lorem ipsum...
+</body>
+</html>
 ```
