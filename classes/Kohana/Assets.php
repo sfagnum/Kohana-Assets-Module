@@ -245,15 +245,16 @@ abstract class Kohana_Assets
      */
     public function render($assetsType = NULL)
     {
-        $assetsType = is_null($assetsType) ? Assets::ALL : $assetsType;
-        echo $this->_compile_all($assetsType);
+        echo $this->compile($assetsType);
     }
 
-    /**
-     * Render assets
-     *
-     * @param integer $assetsType Assets::ALL, Assets::STYLES
-     */
+    public function compile($assetsType = NULL)
+    {
+        $assetsType = is_null($assetsType) ? Assets::ALL : $assetsType;
+        return $this->_compile_all($assetsType);
+    }
+
+
     private function _compile_all($assetsType)
     {
         $html = NULL;
