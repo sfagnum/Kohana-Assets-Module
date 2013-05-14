@@ -1,7 +1,7 @@
 Kohana-Assets-Module
 ====================
 
-JS/CSS managment module for Kohana 3.2
+JS/CSS managment module for Kohana 3.3
 
 ## Exaples
 in you Controller extending of Controller_Template put some like this: 
@@ -26,10 +26,10 @@ class Controller_Abstract extends Controller_Template
                 'iScroll.min.js'
             );
             Assets::instance('frontend')
-                ->addStyles($styles, 'media/assets/css/')
-                ->addScripts('https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js')
-                ->addScripts($scripts, 'media/assets/js/lib/')
-                ->addScripts('media/assets/js/main.js');
+                ->add_styles($styles, 'media/assets/css/')
+                ->add_scripts('https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js')
+                ->add_scripts($scripts, 'media/assets/js/lib/')
+                ->add_scripts('media/assets/js/main.js');
         }
     }
 ```
@@ -40,10 +40,11 @@ In you 'layouts/main.php' file add:
 <html>
 <head>
     <title>Cool site</title>
-    <?php Assets::instance('frontend')->render(); ?>
+    <?php Assets::instance('frontend')->render(Assets::STYLES); ?>
 </head>
 <body>
     Lorem ipsum...
+    <?php Assets::instance('frontend')->render(Assets::SCRIPTS); ?>
 </body>
 </html>
 ```

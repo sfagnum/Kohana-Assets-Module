@@ -145,11 +145,11 @@ abstract class Kohana_Assets
             return;
         }
         $directory = (! empty($directory) AND ! is_array($directory)) ? $directory : '';
-        if (is_array($assets))
+        if (is_array($assets) AND count($assets) > 0)
         {
             foreach ($assets as $asset)
             {
-                if (count($asset))
+                if (is_array($asset))
                 {
                     if (array_key_exists('priority', $asset))
                     {
@@ -161,6 +161,10 @@ abstract class Kohana_Assets
                             = self::_get_priority($priority, $type);
                     }
 
+                }
+                else {
+                    $this->_namespaces_list[self::$namespace][$type][$directory.$asset]
+                                                = self::_get_priority($priority, $type);
                 }
 
             }
@@ -337,6 +341,6 @@ abstract class Kohana_Assets
 
     function __toString()
     {
-        $this->render();
+        return $this->compile();
     }
 }
